@@ -1,29 +1,39 @@
-import React, { useState } from 'react'
+import React, {  } from 'react'
 import { Link } from "react-router";
 
 function Home() {
-  const [loading,setLoading] =useState(false);
+
   
   return (
-   <div className="min-h-screen flex flex-col items-center justify-center bg-fuchsia-100">
-          <h1 className="p-4 font-bold underline text-3xl">
-            React Project #01
-          </h1>
-          
-          <p className="mb-6 text-center p-2 ">
-            This is a project that changes the color of the box dynamically with ReactJs using diffrent methods 
-          </p>
-            
-              {loading && (
-            <div className="fixed inset-0 flex items-center justify-center bg-black/50">
-              <div className="h-10 w-10 animate-spin rounded-full border-4 border-blue-500 border-t-transparent"></div>
-            </div>)} 
+ <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-orange-100 via-fuchsia-100 to-blue-100">
+  <h1 className="p-4 font-bold text-3xl text-orange-600 underline">
+    React Project #01
+  </h1>
+
+  <p className="mb-6 text-center p-4 text-gray-700 max-w-lg leading-relaxed bg-white/80 rounded-xl shadow">
+    This project changes the color of the box dynamically with React using
+    different methods. Explore each level to see state updates in action.
+  </p>
+
+  
+
+  <div className="border rounded-lg p-6 flex flex-col gap-4 items-center bg-white/70 shadow-lg">
+    <Link
+      to="/LevelOne"
       
-          <div className="border rounded-lg p-6 flex  items-center hover:bg-fuchsia-200">
-            <div className="mb-2 p-1 hover:underline " > <Link to="/LevelOne" onClick={()=>{setLoading(true)}}>LEVEL 1</Link></div>
-            <div className='mb-2 p-1 hover:underline'>   <Link to="/LevelOne">LEVEL 1</Link></div>
-          </div>
-     </div>
+      className="px-4 py-2 rounded-lg bg-blue-500 text-white hover:bg-blue-600 transition"
+    >
+      LEVEL 1
+    </Link>
+    <Link
+      to="/LevelTwo"
+      className="px-4 py-2 rounded-lg bg-orange-500 text-white hover:bg-orange-600 transition"
+    >
+      LEVEL 2
+    </Link>
+  </div>
+</div>
+
 
   )
 }

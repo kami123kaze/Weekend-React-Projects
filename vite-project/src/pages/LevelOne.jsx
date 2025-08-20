@@ -49,12 +49,12 @@ function LevelOne() {
             <span className="bg-gray-100 px-2 py-0.5 rounded text-sm font-mono text-gray-800">
                 ["white", "black", "brown", "orange", "blue"]
             </span>.
-            React uses this array to create a 
+             React uses this array to create a 
             <span className="font-semibold text-green-600">  button for each color</span>.
             <br /><br />
 
-            When you 
-            <span className="font-semibold text-purple-600" >click a button</span>, it runs the function 
+             When you 
+            <span className="font-semibold text-purple-600" > click a button</span>, it runs the function 
             <span className="bg-gray-100 px-1 rounded font-mono text-gray-800"> setTheme(color)</span>. 
             This updates a special React variable called 
             <span className="font-semibold text-pink-600"> state</span> 

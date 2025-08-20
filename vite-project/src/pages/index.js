@@ -1,3 +1,3 @@
 import LevelOne from "./LevelOne";
-
-export {LevelOne}
+import LevelTwo from "./LevelTwo";
+export {LevelOne,LevelTwo}
