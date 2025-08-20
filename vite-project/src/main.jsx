@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import "./index.css";
 import Home from "./Home.jsx";
-import {LevelOne,LevelTwo} from "./pages/index.js"
+import {LevelOne,LevelTwo,LevelThree} from "./pages/index.js"
 import { ThemeProvider } from "./ThemeContext/ThemeContextWrapper.jsx";
 
 let router = createBrowserRouter([
@@ -18,6 +18,10 @@ let router = createBrowserRouter([
    {
     path:"/LevelTwo",
     element: <LevelTwo/>
+  },
+    {
+    path:"/LevelThree",
+    element: <LevelThree/>
   },
 ]);
 

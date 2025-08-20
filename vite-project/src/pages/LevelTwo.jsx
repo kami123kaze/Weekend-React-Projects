@@ -42,24 +42,33 @@ function LevelTwo() {
         </div>
       </div>
 
-      {/* Explanation */}
-      <p className="mt-10 max-w-lg text-center text-gray-700 leading-relaxed space-y-2">
-        In this level, instead of choosing from a fixed{" "}
-        <span className="font-semibold text-blue-600"> array of colors</span>, 
-        you can <span className="font-semibold text-green-600"> type your own color </span> 
-         into the input box above. <br /><br />
-        
-        As you type, React uses a{" "}
-        <span className="font-semibold text-purple-600"> debounce function</span> 
-         — this means it waits for{" "}
-        <span className="font-semibold text-pink-600"> 500 milliseconds</span> after you stop typing 
-        before updating the box color. <br /><br />
-        
-         This teaches you how to handle{" "}
-        <span className="font-semibold text-indigo-600"> user input efficiently </span> 
-         without updating the UI too often. 
-         By waiting for a short delay, we avoid unnecessary re-renders while still giving instant feedback.
-      </p>
+     {/* Explanation */}
+                <p className="mt-10 max-w-lg text-center text-gray-700 leading-relaxed space-y-2">
+                In this level, instead of choosing from a fixed{" "}
+                <span className="font-semibold text-blue-600">array of colors</span>, 
+                you can <span className="font-semibold text-green-600">type your own color</span> 
+                into the input box above. <br /><br />
+
+                React uses a{" "}
+                <span className="font-semibold text-purple-600">debounce function</span>, 
+                which means it waits for{" "}
+                <span className="font-semibold text-pink-600">500 milliseconds</span> after you stop typing 
+                before updating the box color. <br /><br />
+
+                This demonstrates how to handle{" "}
+                <span className="font-semibold text-indigo-600">rapid user input efficiently</span> 
+                without updating the UI too often — a{" "}
+                <span className="italic">performance optimization</span>. 
+                By waiting briefly before applying changes, we avoid unnecessary re-renders while still 
+                providing a smooth, responsive experience. <br /><br />
+
+                Also, notice that the{" "}
+                <span className="font-semibold text-orange-600">theme is global</span> — it comes from a 
+                <span className="font-semibold"> React Context</span>.  
+                That means any component or page in your app can access and update this theme consistently, 
+                ensuring a unified look across the entire application.
+                </p>
+
     </div>
   );
 }

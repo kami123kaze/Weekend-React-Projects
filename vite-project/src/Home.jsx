@@ -31,6 +31,12 @@ function Home() {
     >
       LEVEL 2
     </Link>
+    <Link
+      to="/LevelThree"
+      className="px-4 py-2 rounded-lg bg-fuchsia-700 text-white hover:bg-fuchsia-800 transition"
+    >
+      LEVEL 3
+    </Link>
   </div>
 </div>
 
