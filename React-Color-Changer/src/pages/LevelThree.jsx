@@ -1,18 +1,22 @@
 import React from "react";
 import { useTheme } from "../ThemeContext/themeContextProvider";
 import { HexColorPicker } from "react-colorful";
+import BackButton from "../components/BackButton";
 
 function LevelThree() {
   const { theme, setTheme } = useTheme();
 
   return (
-     <div className="min-h-screen flex flex-col items-center bg-gradient-to-br from-blue-50 to-indigo-100 p-6">
-      {/* Title */}
+    <div className="relative min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-6">
+      
+   
+      <BackButton className="absolute top-6 left-6" />
+      <div className="flex flex-col items-center">
       <h1 className="text-3xl font-bold text-gray-800 mb-6">
          Level Three: Color Picker
       </h1>
 
-      {/* Color Picker */}
+     {/* Color Picker */}
       <div className="mb-6">
         <HexColorPicker color={theme} onChange={setTheme} />
       </div>
@@ -62,7 +66,7 @@ function LevelThree() {
                         showing off React’s ability to handle rapid state changes smoothly.
              </p>
         </div>
-
+    </div>
     </div>
   );
 }

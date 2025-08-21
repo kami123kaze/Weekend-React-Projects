@@ -1,12 +1,15 @@
 import React, { useState } from "react";
-
+import BackButton from "../components/BackButton";
 function LevelOne() {
   const [theme, setTheme] = useState("white");
   const colors = ["white", "black", "red", "yellow", "brown", "blue"];
 
   return (
-    <div className="min-h-screen flex flex-col items-center bg-gradient-to-br from-gray-100 to-gray-300 p-6">
-
+    <div className="relative min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-6">
+      
+   
+      <BackButton className="absolute top-6 left-6" />
+        <div className="flex flex-col items-center">
       <h1 className="text-4xl font-bold text-gray-800 mb-8">Level 1</h1>
 
      
@@ -72,7 +75,7 @@ function LevelOne() {
             <span className="font-semibold text-purple-600"> changing state</span> in React 
             instantly changes what you see on the screen.
      </p>
-
+      </div>
     </div>
   );
 }
