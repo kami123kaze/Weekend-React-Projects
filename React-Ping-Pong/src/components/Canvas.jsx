@@ -20,13 +20,15 @@ useEffect(() => {
 
  useEffect(()=>{
     if(!start) return
-    startGame(ctxRef.current,canvasRef.current,paddleRef,ballRef)
+     if (!ballRef.current) return;
+    startGame(ctxRef.current,canvasRef.current,paddleRef.current,ballRef.current)
  },[start])
 
   return (
+    <div>
         <canvas ref={canvasRef} className='min-w-50 min-h-50 border-2 rounded-2xl'>
-
         </canvas>
+    </div>    
   )
 }
 

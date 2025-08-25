@@ -8,7 +8,8 @@ export default function BallCreation(ctx,canvas){
     radius: 8,                     
     color: 'black',
     dx: 2,                          
-    dy: 2                          
+    dy: 2,
+                            
   };
 
   ctx.beginPath();
