@@ -4,8 +4,9 @@ import PaddleMovement from "./PaddleMovement";
 import RedrawBall from "./RedrawBall";
 import PadCreation from "./PadCreation";
 
-export default function startGame(ctx,canvas,paddles,ball){
+export default function startGame(ctx,canvas,paddles,ball,stopRef){
     const cleanup = PaddleMovement(canvas,paddles)
+  
     
     const gameLoop = ()=>{
 
@@ -18,8 +19,8 @@ export default function startGame(ctx,canvas,paddles,ball){
             PadCreation(ctx, canvas, paddles);
             RedrawBall(ctx,ball)
 
-            requestAnimationFrame(gameLoop);
+            stopRef.current = requestAnimationFrame(gameLoop);
     }
     gameLoop()
-    return cleanup;
+    return cleanup
 }
