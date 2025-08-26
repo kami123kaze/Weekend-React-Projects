@@ -1,12 +1,30 @@
-# React + Vite
+# React-Weather-API  
+> Weekend Project #2 — Beginner-Intermidiate (1–4 hrs)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A **lightweight weather dashboard** that fetches real-time data from the [OpenWeatherMap API](https://openweathermap.org/api) and displays it with **React hooks**, **error handling**, **debounced search**, and **responsive CSS**.  
+Perfect for learning **async data flow**, **state management**, and **API integration** without external UI libraries.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## What it does
+- **Live weather**: current temp, feels-like, humidity, wind speed  
+- **City search**: debounced input + graceful loading & error states  
+- **Responsive layout**: mobile-first, dark/light toggle  
+- **Under 50 kB** gzipped
 
-## Expanding the ESLint configuration
+---
+## File	Learnings
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+useState, useEffect, conditional rendering
+WeatherCard.jsx	prop drilling vs context, styled-components
+SearchBar.jsx	debounced API calls, abort controller
+ErrorBoundary.jsx	basic error boundary pattern
+
+
+##  Quick Start
+```bash
+git clone https://github.com/kami123kaze/Weekend-React-Projects.git
+cd React-Weather-api
+npm install
+# create .env and add: VITE_WEATHER_API_KEY=your_key
+npm run dev

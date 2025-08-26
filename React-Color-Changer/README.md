@@ -1,12 +1,23 @@
-# React + Vite
+# React-Color-Changer  
+> Weekend Project #1 — Project difficulty: **Beginner** (1–3 hours)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A **micro-learning** demo that shows how to build a **state-driven color picker** in React using **hooks, props, and CSS variables** and demonstrating **3 ways** to achieve this effect.  
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+| Level       | What it teaches                                                                                                     |
+| ----------- | ------------------------------------------------------------------------------------------------------------------- |
+| **Level 1** | **Basic `useState`** – single button toggles background color between an array of predefined values.                        |
+| **Level 2** | **Controlled Input & Debouncing** – text box lets the user type any hex/rgb value.                      |
+| **Level 3** | **Using an External Lib** – import a tiny component from an external library for color picking.  |
 
-## Expanding the ESLint configuration
+**Also touched on global-state management / local storage for persistence across pages and refreshes.**
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## Quick Start
+```bash
+git clone https://github.com/kami123kaze/Weekend-React-Projects.git 
+cd React-Color-Changer
+npm install
+npm run dev
