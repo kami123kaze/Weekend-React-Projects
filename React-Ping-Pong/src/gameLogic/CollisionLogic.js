@@ -1,81 +1,61 @@
-
-export default function CollosionLogic(paddles,ball){
+// Replace your function with this improved version
+export default function CollisionLogic(paddles, ball) {
   const { Player: left, Enemy: right } = paddles;
-  const tolerance = 2;
-   
 
 
-  //collison with PLAYER PAD {}
-   if(
-       ((ball.x-ball.radius) <= (left.x + left.width)) 
-        &&
-       ((ball.y > left.y) && (ball.y < (left.y + left.height)))
-   ){
-    ball.dx = -ball.dx
-   }
+  // helper sign
+  const sgn = v => (v >= 0 ? 1 : -1);
 
 
-  //collision with ENEMY  PAD{}
-  if(
-    ((ball.x + ball.radius) >= (right.x))
-    &&
-    (ball.y > right.y) && (ball.y <(right.y+right.height))
-  ){
-     ball.dx = -ball.dx
+  function circleRectOverlap(circle, rect) {
+    const closestX = Math.max(rect.x, Math.min(circle.x, rect.x + rect.width));
+    const closestY = Math.max(rect.y, Math.min(circle.y, rect.y + rect.height));
+    const dx = circle.x - closestX;
+    const dy = circle.y - closestY;
+    return { collided: dx * dx + dy * dy <= circle.radius * circle.radius, dx, dy, closestX, closestY };
   }
 
 
-  //Edge case where balls hits the bottom of the right pad 
-      if (
-    ball.x + ball.radius >= right.x - right.width &&
-    ball.x - ball.radius <= right.x &&
+  function resolveCircleRect(circle, rect) {
 
-    ball.y - ball.radius <= right.y + right.height + tolerance &&
-    ball.y - ball.radius >= right.y + right.height - tolerance
-) {
-    console.log("bottom hit");
-    ball.dy = -ball.dy;
-    ball.dx = -ball.dx
-}
+    const rectCx = rect.x + rect.width / 2;
+    const rectCy = rect.y + rect.height / 2;
+    const diffX = circle.x - rectCx;
+    const diffY = circle.y - rectCy;
+    const halfW = rect.width / 2;
+    const halfH = rect.height / 2;
 
 
-    //Edge case where balls hits the top of the right pad    
-      if (
-      ball.x + ball.radius >= right.x - right.width &&
-      ball.x - ball.radius <= right.x &&
-      ball.y - ball.radius >= right.y -right.width  - tolerance &&
-      ball.y - ball.radius <= right.y -right.width + tolerance
-    ) {
-      console.log("top right hit");
-      ball.dy = -ball.dy;
-      ball.dx = -ball.dx
+    const overlapX = halfW + circle.radius - Math.abs(diffX);
+    const overlapY = halfH + circle.radius - Math.abs(diffY);
+
+    if (overlapX > 0 && overlapY > 0) {
+  
+      if (overlapX < overlapY) {
+  
+        circle.dx = -circle.dx;
+    
+        circle.x += sgn(diffX) * overlapX;
+      } else {
+ 
+        circle.dy = -circle.dy;
+        circle.y += sgn(diffY) * overlapY;
       }
+      return true;
+    }
+    return false;
+  }
 
-      //Edge case where balls hits the top of the left pad 
-      if (
-          ball.x + ball.radius > left.x &&
-          ball.x - ball.radius < left.x + left.width &&
-          ball.y + ball.radius >= left.y &&
-          ball.y - ball.radius <= left.y + tolerance 
-        ) {
-          console.log("top hit");
-          ball.dy = -ball.dy;
-          ball.dx = -ball.dx
-       }
 
-       //Edge case where balls hits the bottom of the left pad
+  if (circleRectOverlap(ball, left).collided) {
+    resolveCircleRect(ball, left);
+    return; 
+  }
 
-        if (
-          ball.x + ball.radius >= left.x &&                     
-          ball.x - ball.radius <= left.x + left.width &&        
-
-          ball.y - ball.radius <= left.y + left.height + tolerance &&  
-          ball.y - ball.radius >= left.y + left.height - tolerance
-        ) {
-          console.log("bottom left hit");
-          ball.dy = -ball.dy;
-          ball.dx = -ball.dx;
-        }
+  if (circleRectOverlap(ball, right).collided) {
+    resolveCircleRect(ball, right);
+    return;
+  }
 
 
 }
