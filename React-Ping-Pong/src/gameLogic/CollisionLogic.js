@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars */
+
 export default function CollosionLogic(paddles,ball){
   const { Player: left, Enemy: right } = paddles;
   const tolerance = 2;
@@ -35,6 +35,7 @@ export default function CollosionLogic(paddles,ball){
 ) {
     console.log("bottom hit");
     ball.dy = -ball.dy;
+    ball.dx = -ball.dx
 }
 
 
@@ -47,6 +48,7 @@ export default function CollosionLogic(paddles,ball){
     ) {
       console.log("top right hit");
       ball.dy = -ball.dy;
+      ball.dx = -ball.dx
       }
 
       //Edge case where balls hits the top of the left pad 
@@ -58,17 +60,22 @@ export default function CollosionLogic(paddles,ball){
         ) {
           console.log("top hit");
           ball.dy = -ball.dy;
+          ball.dx = -ball.dx
        }
 
        //Edge case where balls hits the bottom of the left pad
-       if(
-        ball.x + ball.radius > left.x &&
-        ball.x - ball.radius < left.x + left.width &&
 
-       Math.abs(ball.y + ball.radius - (left.y + left.height)) <= tolerance
-       ){
-         console.log("bottom left hit");
+        if (
+          ball.x + ball.radius >= left.x &&                     
+          ball.x - ball.radius <= left.x + left.width &&        
+
+          ball.y - ball.radius <= left.y + left.height + tolerance &&  
+          ball.y - ball.radius >= left.y + left.height - tolerance
+        ) {
+          console.log("bottom left hit");
           ball.dy = -ball.dy;
-       }
+          ball.dx = -ball.dx;
+        }
+
 
 }

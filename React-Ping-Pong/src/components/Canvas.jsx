@@ -4,7 +4,8 @@ import { getPaddles } from './Paddles';
 
 import startGame from '../gameLogic/startGame';
 
-function Canvas({start}) {
+function Canvas({start,setScore,setCountdown,countdown}) {
+  
   const canvasRef = useRef(null);
   const ctxRef = useRef(null);
   const paddleRef = useRef(getPaddles());
@@ -13,7 +14,7 @@ function Canvas({start}) {
 
  
    
-
+  //initial render
     useEffect(() => {
       const canvas = canvasRef.current;
       ctxRef.current = canvas.getContext("2d");
@@ -21,19 +22,36 @@ function Canvas({start}) {
       RenderAll(ctxRef.current, canvas, paddleRef, ballRef);
     }, []);
 
-    useEffect(()=>{
-        if (!start) {
-          
-        if (stopRef.current  !== null) {
-            cancelAnimationFrame(stopRef.current);
-            stopRef.current = null;
-          }
-          return;
-        }
 
-        if (!ballRef.current) return;
-        startGame(ctxRef.current,canvasRef.current,paddleRef.current,ballRef.current,stopRef)
-    },[start])
+useEffect(() => {
+  if (!start) {
+    if (stopRef.current) {
+      cancelAnimationFrame(stopRef.current);
+      stopRef.current = null;
+    }
+    return;
+  }
+
+  if (!ballRef.current) return;
+
+
+  if (stopRef.current) {
+    cancelAnimationFrame(stopRef.current);
+  }
+
+  const cleanup = startGame(
+    ctxRef.current,
+    canvasRef.current,
+    paddleRef.current,
+    ballRef.current,
+    stopRef,
+    setScore,
+    setCountdown,
+    countdown
+  );
+
+  return cleanup;   
+}, [start, setScore, setCountdown, countdown]);
 
 
 

@@ -7,9 +7,10 @@ export default function BallCreation(ctx,canvas){
     y: canvasHeight / 2,           
     radius: 8,                     
     color: 'black',
-    dx: 2,                          
-    dy: 2,
-                            
+    dx: 4,                          
+    dy: 4,
+    scored: false,
+    
   };
 
   ctx.beginPath();
