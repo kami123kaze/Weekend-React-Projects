@@ -8,7 +8,7 @@ export default function PadCreation(ctx, canvas, paddles) {
 
   // right paddle
   right.x = canvas.width - right.width - 10;
-  right.y = (canvas.height - right.height) / 2; 
+  
   ctx.fillStyle = right.color;
   ctx.fillRect(right.x, right.y, right.width, right.height);
 }

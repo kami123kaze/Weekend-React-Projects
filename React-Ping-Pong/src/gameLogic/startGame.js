@@ -4,10 +4,11 @@ import PaddleMovement from "./PaddleMovement";
 import RedrawBall from "./RedrawBall";
 import PadCreation from "./PadCreation";
 import ScoreLogic from "./ScoringLogic";
+import EnemyLogic from "./EnemyLogic";
 
-export default function startGame(ctx,canvas,paddles,ball,stopRef,setScore,setCountdown,countdown){
+export default function startGame(ctx,canvas,paddles,ball,stopRef,setScore,setCountdown,countdown,){
     const cleanup = PaddleMovement(canvas,paddles)
-
+    const difficulty = "Easy"
     
     const gameLoop = () => {
   
@@ -17,12 +18,14 @@ export default function startGame(ctx,canvas,paddles,ball,stopRef,setScore,setCo
             return;              
           }
 
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ScoreLogic(paddles, ball, canvas, setScore,setCountdown);
-  CollosionLogic(paddles, ball);
-  BallMovement(canvas, ball);
-  PadCreation(ctx, canvas, paddles);
-  RedrawBall(ctx, ball);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    BallMovement(canvas, ball);
+    ScoreLogic(paddles, ball, canvas, setScore, setCountdown);
+    EnemyLogic(difficulty, paddles, ball);
+    CollosionLogic(paddles, ball);
+    PadCreation(ctx, canvas, paddles);
+    RedrawBall(ctx, ball);
+
 
   stopRef.current = requestAnimationFrame(gameLoop);
 };
