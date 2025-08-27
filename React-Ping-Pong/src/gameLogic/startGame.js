@@ -6,17 +6,19 @@ import PadCreation from "./PadCreation";
 import ScoreLogic from "./ScoringLogic";
 import EnemyLogic from "./EnemyLogic";
 
-export default function startGame(ctx,canvas,paddles,ball,stopRef,setScore,setCountdown,countdown,){
+export default function startGame(ctx,canvas,paddles,ball,stopRef,setScore,setCountdown,countdown,difficulty){
     const cleanup = PaddleMovement(canvas,paddles)
-    const difficulty = "Easy"
+ 
     
     const gameLoop = () => {
-  
+         
+       
 
          if (countdown !== null) {
             stopRef.current = requestAnimationFrame(gameLoop);
             return;              
           }
+         if(ball.scored == true) ball.scored = false;
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     BallMovement(canvas, ball);

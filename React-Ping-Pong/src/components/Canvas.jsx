@@ -4,7 +4,7 @@ import { getPaddles } from './Paddles';
 
 import startGame from '../gameLogic/startGame';
 
-function Canvas({start,setScore,setCountdown,countdown}) {
+function Canvas({start,setScore,setCountdown,countdown,difficulty}) {
   
   const canvasRef = useRef(null);
   const ctxRef = useRef(null);
@@ -47,11 +47,12 @@ useEffect(() => {
     stopRef,
     setScore,
     setCountdown,
-    countdown
+    countdown,
+    difficulty
   );
 
   return cleanup;   
-}, [start, setScore, setCountdown, countdown]);
+}, [start, setScore, setCountdown, countdown,difficulty]);
 
 
 

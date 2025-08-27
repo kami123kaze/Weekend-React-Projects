@@ -3,7 +3,14 @@ import Canvas from './components/Canvas'
 function App() {
   const [start,setStart] = useState(false)
   const [score,setScore] = useState({Player:0,Enemy:0})
+  const [difficulty,setDifficulty] = useState("Easy")
   const [countdown,setCountdown] = useState(null)
+  
+
+  const handleDifficultyChange = (e)=>{
+   setDifficulty(e.target.value)
+ 
+  }
     
   //countdown tracker
     useEffect(() => {
@@ -37,7 +44,7 @@ function App() {
       <div className='p-2'>Player : {score.Player}  Enemy : {score.Enemy}</div>
      <div>
 
-        <Canvas start={start} setScore={setScore} setCountdown={setCountdown} countdown={countdown}/>
+        <Canvas start={start} setScore={setScore} setCountdown={setCountdown} countdown={countdown} difficulty={difficulty}/>
          {countdown !== null && (
           <div className="absolute inset-0 flex items-center justify-center text-6xl font-bold text-white bg-black/50">
             {countdown}
@@ -46,6 +53,12 @@ function App() {
      </div>
      <div>
         <button onClick={()=>{setStart(prev=>!prev)}}>{start ? "Stop" : "Start"}</button>
+     </div>
+     <div>
+      <button value={"Easy"}      onClick={handleDifficultyChange}>Easy</button>
+      <button value= {"Medium"}    onClick={handleDifficultyChange}>Medium</button>
+      <button value = {"Hard"}      onClick={handleDifficultyChange}>Hard</button>
+      <button value= {"Impossible"}  onClick={handleDifficultyChange}>Impossible</button>
      </div>
     </div>
   )
