@@ -6,7 +6,7 @@ export default function BallCreation(ctx,canvas){
     x: canvasWidth / 2,             
     y: canvasHeight / 2,           
     radius: 8,                     
-    color: 'black',
+    color: 'orange',
     dx: 4,                          
     dy: 4,
     scored: false,
