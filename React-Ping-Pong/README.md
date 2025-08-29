@@ -40,6 +40,11 @@ For me, this project was an important step from basic apps into **intermediate R
 
 ---
 
+## Preview
+![Ping Pong Demo](./assets/PingPong_page-0001.jpg)
+
+---
+
 ##  Getting Started
 ```bash
 # Clone this repo
@@ -52,4 +57,8 @@ cd react-ping-pong
 npm install
 
 # Run the dev server
+
+
+
+
 npm run dev
