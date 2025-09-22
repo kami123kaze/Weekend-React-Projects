@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useEventListener from "../CustomHooks/useEventListener";
 
 interface ButtonProps {
@@ -8,12 +8,55 @@ function Board({word}: ButtonProps) {
   
   const [guesses,setGuesses] = useState<string[]>([])
   const [currentGuess,setCurrentGuess] = useState<string>("")
+  const [gameComplete,setGameComplete] = useState<boolean>(false)
+  const [gameResult,setGameResult]     = useState<boolean>(false)
   useEventListener({setGuesses,setCurrentGuess,})
   
+console.log("<-- Render count")
+ /// checking if game complete
+  useEffect(()=>{
+      function validateComplete(){
+        if(guesses.length !== 0){
+          let isCorrect:boolean = true
+          for(let i=guesses.length-1;i<guesses.length;i++){
+            for(let j=0;j<guesses[i].length;j++){
+             if(guesses[i][j]!==word[j]) isCorrect=false
+            }
+            if(isCorrect===true){
+                    setGameComplete(true)
+                    setGameResult(true)
+                    console.log("game complete")
+            }
+          }
+        }
+      }
+      validateComplete()
+  },[guesses,word])
+
+  // when game completes
+   useEffect(()=>{
+    if(guesses.length === 6 && !gameComplete){
+      setGameResult(false)
+      setGameComplete(true)
+    }
+   },[gameComplete,guesses])
+
   return (
     <div className="flex flex-col gap-2 p-6 border-2 m-2">
        {/* trying to create board */}
-
+      { gameComplete && (
+       <div className="fixed inset-0 bg-gray-500/40 flex items-center justify-center z-50">
+          <div className="bg-amber-50 p-6 rounded shadow-lg flex flex-col items-center justify-center">
+            Game Complete !!!! Your Result
+            <span className={`underline ${gameResult ? "text-green-600" : "text-red-300"}`}>{
+              gameResult? " YOU WIN !!!" : " YOU LOST !!!"
+              } </span>
+              <div>
+                <button className="rounded-2xl border bg-indigo-500 p-2 m-2" onClick={()=>{window.location.reload()}}>Play Again</button>
+              </div>
+          </div>
+       </div>
+        ) }
      {Array.from({ length: 6 }).map((_, rowIdx) => {
         const row: string = guesses[rowIdx] ?? (rowIdx === guesses.length ? currentGuess : "");
         return (
@@ -26,7 +69,7 @@ function Board({word}: ButtonProps) {
                 if (char === word[colIdx]) colorClass = "bg-green-500";
                 else if (word.includes(char)) colorClass = "bg-orange-400";
               }
-              console.log(word)
+
               return (
               <div
                 key={colIdx}
