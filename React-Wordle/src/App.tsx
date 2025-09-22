@@ -6,21 +6,25 @@ import Button from './components/Button'
 
 function App() {
   const [start,setStart]    = useState<boolean>(false)
-  const totalWords:String[] = fiveLetterWords;
+  const [word,setWord]      = useState<string>('')
 
 
-
+ //getting the winning word
   useEffect(()=>{
-   
-  },[])
+  function startGame(){
+      const totalWords:string[] = fiveLetterWords;
+      setWord(totalWords[Math.floor(Math.random() * totalWords.length)]);
+  }
+  startGame()
+  },[start])
 
 
   return (
-    <div className='min-h-screen min-w-screen flex flex-col justify-center items-center'>
-      <h1>REACT WORDLE GAME</h1>
+    <div className='min-h-screen min-w-screen flex flex-col justify-center items-center bg-fuchsia-200'>
+      <h1 className='text-2xl font-bold underline text-fuchsia-600'>REACT WORDLE GAME</h1>
       {/* Board Div*/}
             <div >
-                <Board/>
+                <Board word={word}/>
             </div>
       {/* Button Div*/}
             <div>
