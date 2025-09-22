@@ -17,7 +17,6 @@ function App() {
   }
   startGame()
   },[start])
- console.log(word)
 
   return (
     <div className='min-h-screen min-w-screen flex flex-col justify-center items-center bg-fuchsia-200'>

@@ -15,22 +15,11 @@ function Board({word}: ButtonProps) {
 console.log("<-- Render count")
  /// checking if game complete
   useEffect(()=>{
-      function validateComplete(){
-        if(guesses.length !== 0){
-          let isCorrect:boolean = true
-          for(let i=guesses.length-1;i<guesses.length;i++){
-            for(let j=0;j<guesses[i].length;j++){
-             if(guesses[i][j]!==word[j]) isCorrect=false
-            }
-            if(isCorrect===true){
-                    setGameComplete(true)
-                    setGameResult(true)
-                    console.log("game complete")
-            }
-          }
-        }
-      }
-      validateComplete()
+      const lastGuess = guesses[guesses.length - 1];
+      if(lastGuess === word) {
+        setGameComplete(true);
+        setGameResult(true);
+      } 
   },[guesses,word])
 
   // when game completes
