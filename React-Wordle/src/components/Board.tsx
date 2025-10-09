@@ -13,7 +13,7 @@ function Board({word}: ButtonProps) {
   useEventListener({setGuesses,setCurrentGuess,})
   
 console.log("<-- Render count")
- /// checking if game complete
+ /// checking if game has completed
   useEffect(()=>{
       const lastGuess = guesses[guesses.length - 1];
       if(lastGuess === word) {
