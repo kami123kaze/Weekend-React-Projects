@@ -1,8 +1,9 @@
 import { useEffect, useRef } from "react";
 import {renderStart} from "../gameLogic"
+import { useMovement } from "../gameLogic/useMovement";
 
 function Canvas() {
-
+  
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const charRef   = useRef<Character>({
     x:0,
@@ -14,6 +15,8 @@ function Canvas() {
     isJumping:false,
     img:new Image()
   })
+  useMovement(charRef)
+
 
 
   useEffect(()=>{
