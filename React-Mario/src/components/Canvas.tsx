@@ -5,6 +5,14 @@ import { useMovement } from "../gameLogic/customHooks/useMovement";
 function Canvas() {
   
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const initialClouds: Cloud[] = [
+    { x: 50, y: 70, scale: 1, speed: 0.2 },
+    { x: 150, y: 50, scale: 1.2, speed: 0.15 },
+    { x: 250, y: 90, scale: 0.8, speed: 0.25 }
+  ];
+  const cloudsRef = useRef<Cloud[]>(initialClouds);
+
+
   const charRef   = useRef<Character>({
     x:0,
     y:0,
@@ -26,7 +34,7 @@ function Canvas() {
     const ctx = canvas.getContext("2d");
     if(!ctx) return
 
-    renderStart(ctx,canvas,charRef)
+    renderStart(ctx,canvas,charRef,cloudsRef)
   },[])
 
   return (

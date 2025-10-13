@@ -10,7 +10,7 @@ function Landing() {
     return value ? JSON.parse(value) : false;
 
   })
-  // imp  note, since the browser finishes the loading of images on diffrent times i haev decided to keep a game state that refreshes the page when we first ensuring the correct loading of all assests. The hook under is to set state to false when the user navigates or leaves page.
+  // imp  note, since the browser finishes the loading of images on diffrent times i have decided to keep a game state that refreshes the page when we first ensuring the correct loading of all assests. The hook under is to set state to false when the user navigates or leaves page.
 
   // {this was a workaround to converting all loading options to async !}
 
