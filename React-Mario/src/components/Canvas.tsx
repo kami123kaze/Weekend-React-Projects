@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import {renderStart} from "../gameLogic"
-import { useMovement } from "../gameLogic/useMovement";
+import { useMovement } from "../gameLogic/customHooks/useMovement";
 
 function Canvas() {
   
