@@ -13,7 +13,7 @@ export default function floorCreation(ctx: CanvasRenderingContext2D, canvas: HTM
   // using temperory overlay for bricks remember to recalc dynamically if anything changes 
     for (let x = 0; x < canvas.width; x += imgWidth-12.8) {
       ctx.drawImage(floorImg, x, y, imgWidth, imgHeight);
-      console.log(x)
+     // console.log(x)
     }
 }
 }

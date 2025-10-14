@@ -1,5 +1,4 @@
 export default function cloudCreation(ctx: CanvasRenderingContext2D, cloudsRef: React.RefObject<Cloud[]>) {
-  console.log(cloudsRef.current)
   cloudsRef.current.forEach(cloud => {
     const { x, y, scale } = cloud;
 

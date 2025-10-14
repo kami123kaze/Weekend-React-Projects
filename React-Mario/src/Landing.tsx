@@ -45,7 +45,7 @@ function Landing() {
 
     {/* Canvas */}
       <div className="flex-1 flex items-center justify-center">
-        <Canvas />
+        <Canvas  start ={start}/>
       </div>
       
       {/*Footer*/}

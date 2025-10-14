@@ -1,14 +1,15 @@
 import { useEffect, useRef } from "react";
 import {renderStart} from "../gameLogic"
 import { useMovement } from "../gameLogic/customHooks/useMovement";
+import startGameLoop from "../gameLogic/gameLoop/gameLoop";
 
-function Canvas() {
+function Canvas({ start }: { start: boolean }) {
   
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const initialClouds: Cloud[] = [
-    { x: 50, y: 70, scale: 1, speed: 0.2 },
-    { x: 150, y: 50, scale: 1.2, speed: 0.15 },
-    { x: 250, y: 90, scale: 0.8, speed: 0.25 }
+    { x: 50, y: 70, scale: 1, speed: 5},
+    { x: 150, y: 50, scale: 1.2, speed: 4 },
+    { x: 250, y: 90, scale: 0.8, speed: 3 }
   ];
   const cloudsRef = useRef<Cloud[]>(initialClouds);
 
@@ -35,7 +36,9 @@ function Canvas() {
     if(!ctx) return
 
     renderStart(ctx,canvas,charRef,cloudsRef)
-  },[])
+    startGameLoop(ctx,canvas,charRef,cloudsRef,start)
+    
+  },[start])
 
   return (
     <div className="flex items-center justify-center">
