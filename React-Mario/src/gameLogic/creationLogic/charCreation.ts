@@ -6,19 +6,15 @@ export default function charCreation(
   const img = char.current.img;
   if (!img.complete) return; // safety check in case it isn’t loaded yet
 
-  const maxWidth = canvas.width * 0.3;
-  const maxHeight = canvas.height * 0.3;
-
   // only calculate once after preload
   if (!char.current.scale) {
-    char.current.scale = Math.min(maxWidth / img.width, maxHeight / img.height);
-
+    char.current.scale = 0.06
     char.current.imgWidth = img.width * char.current.scale;
     char.current.imgHeight = img.height * char.current.scale;
 
     char.current.x = 2;
-    // hardcoded value to start off{mario abv ground} will neef floorh to cal dynamically
-    char.current.y = canvas.height - char.current.imgHeight - 48;
+    // hardcoded value to start off{mario abv ground} will need floorh to cal dynamically
+    char.current.y = canvas.height - char.current.imgHeight - 54.5;
   }
 
   // finally draw mario

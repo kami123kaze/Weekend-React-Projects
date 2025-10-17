@@ -10,7 +10,6 @@ export default function startGameLoop(
   char: React.RefObject<Character>,
   clouds: React.RefObject<Cloud[]>,
   start: boolean,
-  images: Record<string, HTMLImageElement>
 ): void {
 
   if (!start) {
@@ -21,10 +20,10 @@ export default function startGameLoop(
   function gameLoop() {
     // updates
     cloudUpdation(clouds, canvas);
-    charUpdation(char)
+    charUpdation(char,canvas)
 
     // renders
-    renderStart(ctx, canvas, char, clouds, images);
+    renderStart(ctx, canvas, char, clouds);
 
     // next frame
     animationId = requestAnimationFrame(gameLoop);

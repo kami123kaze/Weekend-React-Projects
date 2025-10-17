@@ -45,10 +45,10 @@ useEffect(() => {
   const ctx = canvas.getContext("2d");
   if (!ctx) return;
 
-  renderStart(ctx, canvas, charRef, cloudsRef,images );
+  renderStart(ctx, canvas, charRef, cloudsRef);
 
     if(!start) return
-  startGameLoop(ctx, canvas, charRef, cloudsRef, start,images);
+  startGameLoop(ctx, canvas, charRef, cloudsRef, start);
   console.log("running")
 }, [start, imagesLoaded]);
 

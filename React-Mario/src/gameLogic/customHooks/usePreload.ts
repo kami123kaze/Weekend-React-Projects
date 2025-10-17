@@ -27,4 +27,4 @@ export default function usePreload(urls: string[]) {
     };
   }, [urls]);
 
-return { loaded, images: useMemo(() => images, [loaded]) };}
+return { loaded, images: useMemo(() => images, [images]) };}

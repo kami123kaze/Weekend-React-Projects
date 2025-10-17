@@ -1,15 +1,16 @@
-export default function charUpdation(char:React.RefObject<Character>){
-    const player = char.current
+export default function charUpdation(char: React.RefObject<Character>, canvas: HTMLCanvasElement) {
+    const player = char.current;
+    const groundY = canvas.height - 53- player.imgHeight; 
 
-    if(player.isJumping && player.velocityY>=-11){
-        player.y -= player.velocityY
-        player.velocityY --;
+    if (player.isJumping) {
+        player.y -= player.velocityY;
+        player.velocityY--;
 
-        //jump finished
-          if(player.velocityY == -11){
-          player.velocityY = 0;
-           player.isJumping = false;
-          }
+        
+        if (player.y >= groundY) {
+            player.y = groundY; 
+            player.velocityY = 0;
+            player.isJumping = false;
+        }
     }
-    
 }

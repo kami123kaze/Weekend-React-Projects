@@ -1,23 +1,24 @@
-export default function floorCreation(
-  ctx: CanvasRenderingContext2D,
-  canvas: HTMLCanvasElement,
-  images: Record<string, HTMLImageElement>
-) {
-  // Load only once
-  const src = "/assets/Brick.png"; // use leading slash for public assets
-  const floorImg = images[src];
+export default function floorCreation(ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement) {
+  const brickWidth = 50;    
+  const brickHeight = 22;   
+  const rows = 3;           
+  const yStart = canvas.height - brickHeight; 
 
-  // Skip drawing until image is ready
-  if (!floorImg || !floorImg.complete) return;
+  ctx.fillStyle = "#b22222"; 
+  ctx.strokeStyle = "#000";  
+  ctx.lineWidth = 2;
 
-  const maxHeight = 70;
-  const scale = maxHeight / floorImg.height;
-  const imgWidth = Math.round(floorImg.width * scale);
-  const imgHeight = Math.round(floorImg.height * scale);
-  const y = canvas.height - imgHeight;
+  for (let row = 0; row < rows; row++) {
+    
+    const offset = (row % 2) * brickWidth / 2;
 
-  // Draw floor tiles across the bottom of the canvas
-  for (let x = 0; x < canvas.width; x += imgWidth - 12.8) {
-    ctx.drawImage(floorImg, x, y, imgWidth, imgHeight);
+    for (let x = -offset; x < canvas.width; x += brickWidth) {
+      const y = yStart - row * brickHeight;
+      
+
+      ctx.fillRect(x, y, brickWidth, brickHeight);
+      
+      ctx.strokeRect(x, y, brickWidth, brickHeight);
+    }
   }
 }
