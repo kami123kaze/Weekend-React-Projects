@@ -29,7 +29,7 @@ function Landing() {
   <div className="min-h-screen min-w-screen bg-yellow-200 flex flex-col">
     {/*opaque overlay*/} 
     {!start &&(
-      <div className="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center z-10">
+      <div className="absolute inset-0 bg-black/85 bg-opacity-70 flex items-center justify-center z-10">
             <button
               onClick={handleStart}
               className="bg-white text-black px-6 py-3 rounded-3xl text-lg font-semibold hover:scale-105 transition-transform"

@@ -2,17 +2,18 @@ import { useEffect, useRef } from "react";
 import {renderStart} from "../gameLogic"
 import { useMovement } from "../gameLogic/customHooks/useMovement";
 import startGameLoop from "../gameLogic/gameLoop/gameLoop";
+import usePreload from "../gameLogic/customHooks/usePreload";
 
 function Canvas({ start }: { start: boolean }) {
   
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const initialClouds: Cloud[] = [
-    { x: 50, y: 70, scale: 1, speed: 5},
-    { x: 150, y: 50, scale: 1.2, speed: 4 },
-    { x: 250, y: 90, scale: 0.8, speed: 3 }
+    { x: 50, y: 70, scale: 1, speed: 1},
+    { x: 150, y: 50, scale: 1.2, speed: 3 },
+    { x: 250, y: 90, scale: 0.8, speed: 2 }
   ];
   const cloudsRef = useRef<Cloud[]>(initialClouds);
-
+  
 
   const charRef   = useRef<Character>({
     x:0,
@@ -25,20 +26,32 @@ function Canvas({ start }: { start: boolean }) {
     img:new Image()
   })
   useMovement(charRef)
+  
+  const { loaded: imagesLoaded, images } = usePreload([
+  "/assets/MarioSide.png",
+  "/assets/Brick.png",
+]);
 
 
+useEffect(() => {
 
-  useEffect(()=>{
-    const canvas = canvasRef.current;
-    if(!canvas) return
+  if (!imagesLoaded) return;
+   if (images["/assets/MarioSide.png"]) {
+    charRef.current.img = images["/assets/MarioSide.png"];
+  }
+  const canvas = canvasRef.current;
+  if (!canvas) return;
 
-    const ctx = canvas.getContext("2d");
-    if(!ctx) return
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return;
 
-    renderStart(ctx,canvas,charRef,cloudsRef)
-    startGameLoop(ctx,canvas,charRef,cloudsRef,start)
-    
-  },[start])
+  renderStart(ctx, canvas, charRef, cloudsRef,images );
+
+    if(!start) return
+  startGameLoop(ctx, canvas, charRef, cloudsRef, start,images);
+  console.log("running")
+}, [start, imagesLoaded]);
+
 
   return (
     <div className="flex items-center justify-center">
