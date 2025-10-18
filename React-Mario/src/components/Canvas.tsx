@@ -29,7 +29,6 @@ function Canvas({ start }: { start: boolean }) {
   
   const { loaded: imagesLoaded, images } = usePreload([
   "/assets/MarioSide.png",
-  "/assets/Brick.png",
 ]);
 
 
