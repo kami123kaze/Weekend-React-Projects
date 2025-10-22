@@ -50,7 +50,7 @@ function Landing() {
       
       {/*Footer*/}
       <div className="bg-amber-100 flex min-w-fit items justify-center  ">
-        <button className="px-3 border-2 rounded-3xl mx-4">Start</button>
+        <button onClick={()=>{setStart(prev=>!prev)}} className="px-3 border-2 rounded-3xl mx-4">{start ? "Stop" : "Start"}</button>
         <button className="px-3 border-2 rounded-3xl mx-4">Reset</button>
       </div>
 </div>
