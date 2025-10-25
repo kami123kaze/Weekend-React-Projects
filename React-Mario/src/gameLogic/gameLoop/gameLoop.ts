@@ -6,8 +6,8 @@ import enemyUpdation from "../updationLogic/enemyUpdation";
 
 let animationId: number | null = null;
 let enemies: Enemy1[] = [
-  { x: 600, y: 250, w: 50, h: 50, speed: 5 },
-  { x: 900, y: 300, w: 50, h: 50, speed: 5 },
+  { x: 600, y: 283, w: 50, h: 50, speed: 5 },
+  { x: 900, y: 283, w: 50, h: 50, speed: 5 },
 ];
 
 export default function startGameLoop(
@@ -29,6 +29,8 @@ export default function startGameLoop(
     cloudUpdation(clouds, canvas);
     charUpdation(char,canvas)
     enemies = enemyUpdation(enemies, canvas);
+    //collisions
+    
     // renders
     renderStart(ctx, canvas, char, clouds);
     enemyCreation(ctx,canvas,enemies)

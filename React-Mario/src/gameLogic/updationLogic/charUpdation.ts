@@ -11,6 +11,7 @@ export default function charUpdation(char: React.RefObject<Character>, canvas: H
             player.y = groundY; 
             player.velocityY = 0;
             player.isJumping = false;
+            player.isDoubleJumping = false;
         }
     }
 }

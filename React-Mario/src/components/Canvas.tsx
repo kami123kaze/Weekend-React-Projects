@@ -23,6 +23,7 @@ function Canvas({ start }: { start: boolean }) {
     imgWidth:0,
     velocityY:0,
     isJumping:false,
+    isDoubleJumping:false,
     img:new Image()
   })
   useMovement(charRef)
