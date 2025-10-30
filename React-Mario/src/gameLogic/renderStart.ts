@@ -9,7 +9,6 @@ export default function renderStart(ctx: CanvasRenderingContext2D,canvas:HTMLCan
             worldCreation(ctx,canvas,clouds,)
                   charCreation(ctx,canvas,char)
 
-        //console.log(char);
       
    
 }

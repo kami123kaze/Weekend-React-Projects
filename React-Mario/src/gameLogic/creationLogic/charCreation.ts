@@ -17,6 +17,5 @@ export default function charCreation(
     char.current.y = canvas.height - char.current.imgHeight - 54.5;
   }
 
-  // finally draw mario
   ctx.drawImage(img, char.current.x, char.current.y, char.current.imgWidth, char.current.imgHeight);
 }

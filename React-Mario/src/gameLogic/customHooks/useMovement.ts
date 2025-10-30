@@ -8,7 +8,8 @@ export function useMovement(char:React.RefObject<Character>):void {
         char.current.isJumping = true;
         console.log(char)
       }
-      else if(char.current.isDoubleJumping === false){
+      
+      else if(char.current.isDoubleJumping === false && (e.key ==="ArrowUp" || e.key.toLocaleLowerCase()==='w') && char.current.isJumping ===true){
          char.current.velocityY = 20;
          char.current.isDoubleJumping = true;
          console.log("double jumped")

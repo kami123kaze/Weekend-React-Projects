@@ -3,6 +3,8 @@ import {renderStart} from "../gameLogic"
 import { useMovement } from "../gameLogic/customHooks/useMovement";
 import startGameLoop from "../gameLogic/gameLoop/gameLoop";
 import usePreload from "../gameLogic/customHooks/usePreload";
+import enemyCreation from "../gameLogic/creationLogic/enemyCreation";
+import enemies from "../gameLogic/startPoints/enemies";
 
 function Canvas({ start }: { start: boolean }) {
   
@@ -13,8 +15,6 @@ function Canvas({ start }: { start: boolean }) {
     { x: 250, y: 90, scale: 0.8, speed: 2 }
   ];
   const cloudsRef = useRef<Cloud[]>(initialClouds);
-  
-
   const charRef   = useRef<Character>({
     x:0,
     y:0,
@@ -32,7 +32,7 @@ function Canvas({ start }: { start: boolean }) {
   "/assets/MarioSide.png",
 ]);
 
-
+ 
 useEffect(() => {
 
   if (!imagesLoaded) return;
@@ -47,9 +47,16 @@ useEffect(() => {
 
   renderStart(ctx, canvas, charRef, cloudsRef);
 
-    if(!start) return
-  startGameLoop(ctx, canvas, charRef, cloudsRef, start);
-  console.log("running")
+    if(!start) {
+      // render eveything for the last frame when stopping to keep immersion
+      renderStart(ctx, canvas, charRef, cloudsRef);
+        enemyCreation(ctx, canvas, enemies);
+        console.log("we innit")
+        return;
+    }
+   const loop = startGameLoop(ctx, canvas, charRef, cloudsRef, start);
+  console.log("Under StartLoop")
+  return ()=>{loop()}
 }, [start, imagesLoaded]);
 
 
