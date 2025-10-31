@@ -3,4 +3,4 @@ declare type platform = {
     y:number,
     length:number,
     width:number
-}
+};
