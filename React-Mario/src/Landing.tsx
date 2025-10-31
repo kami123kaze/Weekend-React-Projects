@@ -3,7 +3,7 @@ import Canvas from "./components/Canvas"
 import useUnload from "./gameLogic/customHooks/useUnload";
 
 function Landing() {
-
+  
   const start = useRef((()=>{
 
     const value = localStorage.getItem("start");

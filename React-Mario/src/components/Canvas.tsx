@@ -5,6 +5,8 @@ import startGameLoop from "../gameLogic/gameLoop/gameLoop";
 import usePreload from "../gameLogic/customHooks/usePreload";
 import enemyCreation from "../gameLogic/creationLogic/enemyCreation";
 import enemies from "../gameLogic/startPoints/enemies";
+// eslint-disable-next-line prefer-const
+let enemy = enemies;
 
 function Canvas({ start }: { start: boolean }) {
   
@@ -50,13 +52,13 @@ useEffect(() => {
     if(!start) {
       // render eveything for the last frame when stopping to keep immersion
       renderStart(ctx, canvas, charRef, cloudsRef);
-        enemyCreation(ctx, canvas, enemies);
+        enemyCreation(ctx, canvas, enemy);
         console.log("we innit")
         return;
     }
-   const loop = startGameLoop(ctx, canvas, charRef, cloudsRef, start);
+   const loop = startGameLoop(ctx, canvas, charRef, cloudsRef, start,enemy);
   console.log("Under StartLoop")
-  return ()=>{loop()}
+  return loop
 }, [start, imagesLoaded]);
 
 

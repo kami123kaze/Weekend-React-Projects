@@ -4,7 +4,6 @@ import renderStart from "../renderStart";
 import charUpdation from "../updationLogic/charUpdation";
 import cloudUpdation from "../updationLogic/cloudUpdation";
 import enemyUpdation from "../updationLogic/enemyUpdation";
-import enemy from "../startPoints/enemies";
 let animationId: number | null = null;
 
 
@@ -13,10 +12,10 @@ export default function startGameLoop(
   canvas: HTMLCanvasElement,
   char: React.RefObject<Character>,
   clouds: React.RefObject<Cloud[]>,
-  start: boolean
+  start: boolean,
+  enemies : Enemy1[]
 ) {
 
-  let enemies = enemy;
   if (animationId) cancelAnimationFrame(animationId);
   
   function gameLoop() {
